@@ -62,14 +62,14 @@ void IOWRITE(int a){
 	if(a==0){
 		GPIOC->ODR |= 0x2000;
 	} else { 
-			GPIOC->ODR &= ~(0x2000);
+		GPIOC->ODR &= ~(0x2000);
 	}
 }	
 void IOTOGGLE(){
-	if(GPIOC->ODR == 0x10000){
-		IOCLEAR();
-	}else{
+	if((ODR & (0x0001<<pin)) == 0x0000){
 		IOSET();
+	}else{
+    IOCLEAR();
 	}
 }
 
@@ -89,8 +89,19 @@ int main(void)
   {	
 		IOSET();
 		HAL_Delay(1000);
+    //Delay(1000);
 		IOCLEAR();
+    //Delay(1000);
 		HAL_Delay(1000);
+  }
+}
+
+void Delay(uint32_t Delay)
+{
+  uint32_t tickstart = 0;
+  tickstart = GetTick();
+  while((GetTick() - tickstart) < Delay)
+  {
   }
 }
 
