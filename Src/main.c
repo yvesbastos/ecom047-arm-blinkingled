@@ -32,7 +32,7 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stm32f1xx_hal.h"
+#include "ioMapping.h"
 //#include "ioMapping.h"
 
 /* USER CODE BEGIN Includes */
@@ -83,37 +83,15 @@ void IOTOGGLE(){
 
 int main(void)
 {
-
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration----------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
- // HAL_Init();
-	//GPIOC->CRL = 0x
   /* Configure the system clock */
-  SystemClock_Config();
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-
-  /* USER CODE BEGIN 2 */
-  /* USER CODE END 2 */
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+  //SystemClock_Config();
   while (1)
-  {
-		
+  {	
 		IOSET();
 		HAL_Delay(1000);
 		IOCLEAR();
 		HAL_Delay(1000);
-
   }
-  /* USER CODE END 3 */
-
 }
 
 /** System Clock Configuration
